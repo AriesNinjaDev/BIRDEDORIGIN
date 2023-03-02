@@ -82,7 +82,7 @@ io.sockets.on('connection', function(socket){
   const codeI = Math.floor(Math.random() * (999999 - 111111 + 1) + 111111);
   const idI = gsi();
   dbc.registerUser(ema,use,pas,codeI,idI);
-  mail.sendVerification(ema,codeI)
+  mail.sendVerification(ema,codeI,idI,use)
    socket.emit("redirectV", idI);
   
 });

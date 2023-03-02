@@ -15,10 +15,6 @@ const playerSchema = new mongoose.Schema({
       code: { type: Number, required: true },
       id: { type: String, required: true }
     },
-    sessions: {
-      type: [String],
-      required: false
-    },
     creation: { type: Date, required: false },
     status: { type: Number, required: true, enum: [0, 1, 2] },
     op: { type: Number, required: true, enum: [0, 1, 2] }
@@ -89,9 +85,6 @@ const newPlayer = new Player({
       v: 0,
       code: codeI,
       id: idI
-    },
-    sessions: {
-      
     },
     creation: now,
     status: 1,

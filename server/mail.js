@@ -5,7 +5,7 @@ const directTransport = require('nodemailer-direct-transport');
 const fromHost = `birded.tech`;const from = 'verify' + '@' + fromHost;
 
 
-function sendVerification(mailTo,userCode) {
+function sendVerification(mailTo,userCode,id,username) {
   
   // Ask for email address
   const to = mailTo
@@ -175,12 +175,13 @@ function sendVerification(mailTo,userCode) {
           
     <div>
       <card style="align-items: stretch;padding: 12px;position: relative;transition-property: border-color, box-shadow;transition-duration: .12s;transition-timing-function: ease-out;border-radius: 8px;background-color: #1C2333;border: 1px solid #2B3245;display: inline-block;color: white;">
-              <p style="color: white;">Dear ${process.env.REPL_OWNER},</p>
+              <p style="color: white;">Dear ${username},</p>
               <p>‎</p>
               <p style="color: white;">It looks like you have requested to verify your email for Birded Online. If you did not ask for this email, please ignore it and delete this. If you did, DO NOT SHARE THIS CODE! Your Requested Code is:</p>
               <center>
                   <h1 style="font-size: 75px;">${trueVerificationCode}</h1>
               </center>
+        <p>Lost your verification page? Enter your code <a href="https://birded.tech/login/verify/?k=${id}" style="color:#61A1F3;">here</a>.</p>
               <p>‎</p>
           </card>
     </div>
