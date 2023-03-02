@@ -1,0 +1,27 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^18.0.6",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "html": "^1.0.0",
+    "jquery": "^3.6.3",
+    "jQuery": "^1.7.4",
+    "mongodb": "^4.13.0",
+    "mongoose": "^6.9.0",
+    "node-fetch": "^3.2.6",
+    "nodemailer": "^6.9.1",
+    "nodemailer-direct-transport": "^3.3.2",
+    "socket.io": "^4.5.4",
+    "socket.io-client": "^4.5.4"
+  }
+}

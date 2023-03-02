@@ -1,0 +1,517 @@
+<!--
+
+Game Page
+
+
+$1 - Super    $5 - Mega    $25 - Ultimate
+Feather Wing Talon
+#926DED
+-->
+
+
+<head>
+<title>Birded | Playing</title>
+<link rel="icon" type="image/x-icon" href="../favi.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+<style>
+@import 'https://fonts.googleapis.com/css?family=Montserrat';
+body {
+  background: #383F51;
+  overflow: hidden;
+}
+
+.wrap {
+  width: 100%;
+  margin: 0 auto;
+
+}
+
+.title {
+  font-family: "Montserrat";
+  font-size: 24px;
+  line-height: 30px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.btn-show {
+  margin-left: 2em;
+}
+
+.card {
+  margin: 20px 0;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+}
+
+.container.show-border,
+.element.show-border {
+  border: 1px red solid;
+  padding: 9px;
+}
+
+.content {
+  color: #DDDBF1;
+  background-color: #3C4F76;
+  padding: 6px;
+  font-family: "Montserrat";
+  font-size: calc(1vw + 1em);
+  border-radius: 14px;
+  vertical-align: middle;
+  position:relative;
+  
+}
+
+.prtext {
+  position: relative;
+  color: #DDDBF1;
+  background-color: #383F51;
+  vertical-align: center !important;
+  height: 100%;
+  padding: 2%;
+  font-family: "Montserrat";
+  font-size: 50%;
+  border-radius: 14px;
+  width: 95%;
+  border: none;
+  
+}
+
+.prsendicon {
+  position: relative;
+  height: auto;
+  vertical-align: middle;
+  width: 3%;
+  border: none;
+  padding-left: 1%;
+  translate: 0 18%;
+}
+
+
+.prtextc {
+  position: absolute;
+  color: #DDDBF1;
+  background-color: #383F51;
+  vertical-align: middle !important;
+  height: 15%;
+  bottom: 2%;
+  padding: 2.4%;
+  font-family: "Montserrat";
+  font-size: 50%;
+  border-radius: 14px;
+  width: 84%;
+  border: none;
+  
+}
+
+.prsendiconc {
+  position: absolute;
+  height: auto;
+  vertical-align: middle;
+  width: 8%;
+  border: none;
+  padding-left: 1%;
+  translate: 0 18%;
+  bottom: 7%;
+  right: 3.4%;
+}
+  
+  
+
+  .prtextc,
+.prtext:focus {
+  outline: none;
+}
+
+
+@media (max-width: 375px) {
+  .content {
+    padding: 5px;
+    font-size: 0;
+    text-indent: -9999999em;
+  }
+}
+.container,
+.element {
+  padding: 10px;
+  
+}
+
+.clearfix:before, .clearfix:after {
+  content: " ";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+
+.float-left {
+  float: left;
+}
+
+.element,
+.content {
+  box-sizing: border-box;
+}
+
+.content {
+  height: 100%;
+  line-height: 0;
+  padding-left: 1%;
+}
+
+.c p {
+font-size: 12px;
+
+}
+
+.relc::-webkit-scrollbar-track
+{
+
+	background-color: #383F51;
+  overflow: hidden;
+	border-radius: 10px;
+}
+.relc::-webkit-scrollbar
+{
+	width: 7px;
+	background-color: #383F51;
+}
+
+::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+ 
+	background-color: #E0C6A3;
+  transition: 0.3s;
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background-color: #F2E8C5;
+  transition: color .3s ease;
+}
+
+.structure-1 {
+  width: 70%;
+}
+
+.structure-2 {
+  width: 30%;
+}
+
+.a {
+  height: 20%;
+}
+
+.b {
+  height: 14%;
+}
+
+.a {
+  width: 100%;
+}
+
+.b {
+  width: 100%;
+}
+
+.c {
+  width: 100%;
+}
+
+.relc {
+  overflow-y: scroll !important;
+  display: flex;
+  flex-direction: column;
+  
+  height: 100%;
+}
+
+.relc > :first-child {
+    margin-top: auto !important;
+    /* use !important to prevent breakage from child margin settings */
+}
+
+.d {
+  width: 100%;
+}
+
+.structure-1-2-1 {
+  width: 20%;
+}
+
+.structure-1-2-2 {
+  width: 80%;
+}
+
+.c {
+  height: 56%;
+}
+  
+.d {
+  height: 10%;
+}
+
+.e {
+  height: 240px;
+}
+
+.f {
+  height: 50%;
+}
+
+.g {
+  height: 40%;
+}
+
+.h {
+  height: 120px;
+}
+
+@media (max-width: 1000px) {
+  .structure-1-2-1,
+.structure-1-2-2 {
+    float: none;
+    width: 100%;
+  }
+
+  .a,
+.b,
+.e {
+    
+  }
+}
+@media (max-width: 768px) {
+body {
+  overflow: scroll;
+}
+  .structure-1,
+.structure-2,
+.structure-3 {
+    float: none;
+    width: 100%;
+  }
+
+  .structure-1-2-1,
+.structure-1-2-2 {
+    float: left;
+  }
+
+  .structure-1-2-1 {
+    width: 20%;
+  }
+
+  .structure-1-2-2 {
+    width: 80%;
+  }
+
+  .a,
+.b,
+.e {
+    
+  }
+}
+@media (max-width: 600px) {
+  body {
+  overflow: scroll;
+}
+  .structure-1-2-1,
+.structure-1-2-2 {
+    float: none;
+    width: 100%;
+  }
+
+  .a,
+.b,
+.e {
+    height: 120px;
+  }
+}
+@media (max-width: 350px) {
+  body {
+  overflow: scroll;
+}
+  .a,
+.b {
+    float: none;
+    width: 100%;
+  }
+}
+</style>
+  
+</head>
+
+<div style="display:none;" id="totalobject" class="wrap">
+  <!--<h2 class="title">
+    Complex layout with div
+  </h2> -->
+
+    <div class="float-left structure-1">
+      <div class="block clearfix">
+        <div class="float-left element a">
+          <div class="content">
+            Longevical Stats
+          </div>
+        </div>
+      </div>
+      <div class="block clearfix">
+        <div class="float-left element b">
+          <div class="content">
+            Spontaneous Stats
+          </div>
+        </div>
+      </div>
+      <div class="block clearfix">
+        <div class="float-left element c">
+          <div id="scrollbottom" class="content relc">
+            <p>line 1</p>
+            <p>line 3</p>
+            <p>line 5</p>
+            <p>line 7</p>
+            <p>line 1</p>
+            <p>line 3</p>
+            <p>line 5</p>
+            <p>line 7</p>
+            <p>line 1</p>
+            <p>line 3</p>
+            <p>line 5</p>
+            <p>line 7</p>
+            <p>line 1</p>
+            <p>line 3</p>
+            <p>line 5</p>
+            <p>line 7</p>
+            <p>line 1</p>
+            <p>line 3</p>
+            <p>line 5</p>
+            <p>line 7</p>
+            
+          </div>
+        </div>
+      </div>
+      <div class="block clearfix">
+        <div class="float-left element d">
+          <div class="content">
+            <form id="gametextform" class="my-form">
+            <input placeholder="Type to Play..." class="prtext"></input><input type="image" src="/visual/img/send-icon.png" border="0" alt="Submit" class="prsendicon" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="float-left structure-2">
+      <div class="element f">
+        <div class="content">
+          Map Object
+        </div>
+      </div>
+      <div class="element g">
+        <div class="content">
+
+          <input placeholder="Type to Chat..." class="prtextc"></input><input type="image" src="/visual/img/send-icon.png" border="0" alt="Submit" class="prsendiconc" />
+          
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+
+<script>
+
+  const scrollToBottom = () => {
+    const element = document.getElementById("scrollbottom");
+    element.scrollTop = element.scrollHeight;
+}
+  
+var socket = io.connect('http://localhost:8080');
+  function setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+function eraseCookie(name) {   
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+  // ------------------------------------------ //
+
+const x = getCookie('session_id');
+const y = getCookie('access_id');
+
+const codes = "14708605"
+
+  function chk () {
+if (codes.split(",").indexOf(y) !== -1) {
+  alert("DEV ACCESS ACTIVE. ID:RAYCST_182349")
+  document.getElementById("totalobject").style.display = "block";
+  if (x) {
+  window.location.replace("/login");
+}
+} else {
+  window.location.replace("/soon");
+}
+  }
+
+function sessiongrab() {
+  if (x) {
+  window.location.replace("/login");
+} else {
+
+// Session Check Code
+
+
+  document.getElementById("totalobject").style.display = "block";
+}
+}
+
+
+
+chk() // COMMENT OUT WHEN RELEASED
+
+// sessiongrab() // UNCOMMENT WHEN RELEASED
+  
+</script>
+
+
+
+
+
+<script>
+
+function processForm(e) {
+    if (e.preventDefault) e.preventDefault();pt = document.getElementById('prtext').value
+  scrollToBottom()
+  document.getElementById('prtext').reset()
+  alert(pt)
+    return false;
+}
+
+var form = document.getElementById('gametextform');
+if (form.attachEvent) {
+    form.attachEvent("submit", processForm);
+} else {
+    form.addEventListener("submit", processForm);
+}
+  
+</script>
+
+
+
+
+

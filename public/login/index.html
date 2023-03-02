@@ -1,0 +1,375 @@
+<head>
+<title>Birded | Log In</title>
+<link rel="icon" type="image/x-icon" href="/favi.ico">
+<script src="/jquery.min.js"></script>
+<script src="/foundation.min.js"></script>
+
+</head>
+<link href="notifstyle.css" rel="stylesheet">
+<style>
+  body{
+	margin:0;
+	color:#6a6f8c;
+	background:#c8c8c8;
+	font:600 16px/18px 'Open Sans',sans-serif;
+  overflow: hidden;
+    background:url(https://cdna.artstation.com/p/assets/images/images/052/337/274/4k/whimmy-bird.jpg?1659538570) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+*,:after,:before{box-sizing:border-box}
+.clearfix:after,.clearfix:before{content:'';display:table}
+.clearfix:after{clear:both;display:block}
+a{color:inherit;text-decoration:none}
+
+.login-wrap{
+	width:100%;
+	margin:auto;
+	max-width:525px;
+	min-height:670px;
+	position:relative;
+	background:url(https://cdna.artstation.com/p/assets/images/images/052/337/274/4k/whimmy-bird.jpg?1659538570) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+}
+.login-html{
+	width:100%;
+	height:100%;
+	position:absolute;
+	padding:90px 70px 50px 70px;
+	background:rgba(40,57,101,.9);
+}
+.login-html .sign-in-htm,
+.login-html .sign-up-htm{
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	position:absolute;
+	transform:rotateY(180deg);
+	backface-visibility:hidden;
+	transition:all .4s linear;
+}
+.login-html .sign-in,
+.login-html .sign-up,
+.login-form .group .check{
+	display:none;
+}
+.login-html .tab,
+.login-form .group .label,
+.login-form .group .button{
+	text-transform:uppercase;
+}
+.login-html .tab{
+	font-size:22px;
+	margin-right:15px;
+	padding-bottom:5px;
+	margin:0 15px 10px 0;
+	display:inline-block;
+	border-bottom:2px solid transparent;
+}
+.login-html .sign-in:checked + .tab,
+.login-html .sign-up:checked + .tab{
+	color:#fff;
+	border-color:#1161ee;
+}
+.login-form{
+	min-height:345px;
+	position:relative;
+	perspective:1000px;
+	transform-style:preserve-3d;
+}
+.login-form .group{
+	margin-bottom:15px;
+}
+.login-form .group .label,
+.login-form .group .input,
+.login-form .group .button{
+	width:100%;
+	color:#fff;
+	display:block;
+}
+.login-form .group .input,
+.login-form .group .button{
+	border:none;
+	padding:15px 20px;
+	border-radius:25px;
+	background:rgba(255,255,255,.1);
+}
+.login-form .group input[data-type="password"]{
+	text-security:circle;
+	-webkit-text-security:circle;
+}
+.login-form .group .label{
+	color:#aaa;
+	font-size:12px;
+}
+.login-form .group .button{
+	background:#1161ee;
+}
+
+.login-form .group label .icon{
+	width:15px;
+	height:15px;
+	border-radius:2px;
+	position:relative;
+	display:inline-block;
+	background:rgba(255,255,255,.1);
+}
+.login-form .group label .icon:before,
+.login-form .group label .icon:after{
+	content:'';
+	width:10px;
+	height:2px;
+	background:#fff;
+	position:absolute;
+	transition:all .2s ease-in-out 0s;
+}
+.login-form .group label .icon:before{
+	left:3px;
+	width:5px;
+	bottom:6px;
+	transform:scale(0) rotate(0);
+}
+.login-form .group label .icon:after{
+	top:6px;
+	right:0;
+	transform:scale(0) rotate(0);
+}
+.login-form .group .check:checked + label{
+	color:#fff;
+}
+.login-form .group .check:checked + label .icon{
+	background:#1161ee;
+}
+.login-form .group .check:checked + label .icon:before{
+	transform:scale(1) rotate(45deg);
+}
+.login-form .group .check:checked + label .icon:after{
+	transform:scale(1) rotate(-45deg);
+}
+.login-html .sign-in:checked + .tab + .sign-up + .tab + .login-form .sign-in-htm{
+	transform:rotate(0);
+}
+.login-html .sign-up:checked + .tab + .login-form .sign-up-htm{
+	transform:rotate(0);
+}
+
+.hr{
+	height:2px;
+	margin:60px 0 50px 0;
+	background:rgba(255,255,255,.2);
+}
+.foot-lnk{
+	text-align:center;
+}
+</style>
+<br><br>
+<div class="login-wrap">
+	<div class="login-html">
+		<input id="tab-1" type="radio" name="tab" class="sign-in"><label for="tab-1" class="tab">Sign In</label>
+		<input id="tab-2" type="radio" name="tab" class="sign-up" checked><label for="tab-2" class="tab">Sign Up</label>
+		<div class="login-form">
+      <form id='legform'>
+			<div class="sign-in-htm">
+				<div class="group">
+					<label for="user" class="label">Username</label>
+					<input id="luser" type="text" class="input">
+				</div>
+				<div class="group">
+					<label for="pass" class="label">Password</label>
+					<input id="lpass" type="password" class="input" data-type="password">
+				</div>
+				<!--<div class="group">
+					<input id="check" type="checkbox" class="check" checked>
+					<label for="check"><span class="icon"></span> Keep me Signed in</label>
+				</div>-->
+				<div class="group">
+					<input type="submit" class="button vxd" value="Sign In">
+				</div>
+				<div class="hr"></div>
+        </form>
+			</div>
+      <form id='regform'>
+			<div class="sign-up-htm">
+		<div class="group">
+					<label for="email" class="label">Email Address</label>
+					<input required id="email" type="text" class="input">
+				</div>
+				<div class="group">
+					<label for="user" class="label">Username</label>
+					<input required id="user" type="text" class="input">
+				</div>
+				<div class="group">
+					<label for="pass" class="label">Password</label>
+					<input required id="pass" type="password" class="input" data-type="password">
+				</div>
+				<div class="group">
+          <br>
+          <p style="font-size:10px;">By signing up, you agree to the <a style="color:#398BF3;" href="/tos">Terms and conditions</a>.</p>
+					<input type="submit" class="button signupb" value="Sign Up">
+				</div>
+				<div class="hr"></div>
+				<div class="foot-lnk">
+					<label for="tab-1">Already a player?</a>
+				</div>
+			</div>
+      </form>
+		</div>
+	</div>
+</div>
+<script src="notification.js"></script>
+<script src="../socket.io.min.js"></script>
+<script>
+var socket = io();
+
+function setCookie(name, value, days) {
+  var expires = "";
+  if (days) {
+    var date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+
+function getCookie(name) {
+  var nameEQ = name + "=";
+  var ca = document.cookie.split(';');
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+  }
+  return null;
+}
+
+function eraseCookie(name) {
+  document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+// ------------------------------------------ //
+
+const x = getCookie('session_id');
+const y = getCookie('access_id');
+var grant = 0
+
+alertify.set({ delay: 1700 });
+
+const codes = "14708605"
+
+function chk() {
+  if (codes.split(",").indexOf(y) !== -1) {
+    if (!x) {
+      grant = 1;
+    }
+  } else {
+    grant = 1;
+  }
+}
+
+  chk()
+
+const isBetween = (length, min, max) => length < min || length > max ? false : true;
+
+const isPasswordSecure = (password) => {
+  const re = new RegExp("^(?=.*[a-z])(?=.*[0-9])(?=.{7,})");
+  return re.test(password);
+};
+
+function validateEmail(mail) {
+  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+    return (true)
+  } else {
+    return (false)
+  }
+}
+
+function onlyLetters(str) {
+  return str.match("^[A-Za-z0-9_]+$");
+}
+
+
+var inputUsername = ""
+var inputPassword = ""
+var inputEmail = ""
+
+function processForm(e) {
+  if (e.preventDefault) e.preventDefault();
+
+  inputUsername = document.getElementById("user").value.trim();
+  inputPassword = document.getElementById("pass").value.trim();
+  inputEmail = document.getElementById("email").value.trim();
+
+  if (grant == 0) {
+	  alertify.error("Server currently under maintenance! Check back soon.");  
+  } else {
+    socket.emit("serverUsernameCompare", inputEmail, inputUsername, inputPassword);
+  }
+
+  return false;
+}
+
+function processSignin(e) {
+  if (e.preventDefault) e.preventDefault();
+
+	  alertify.error("Logging in is disabled for now!");  
+
+  return false;
+}
+  
+  // full check
+socket.on("serverUsernameCompareResult", (ema, ven, posth) => {
+
+  if (ema == 1) {
+    if (ven == 1) {
+      if (onlyLetters(inputUsername)) {
+          if (validateEmail(inputEmail)) {
+            if ((inputUsername.length >= 3) && (inputUsername.length <= 16)) {
+              if (isPasswordSecure(inputPassword)) {
+                socket.emit("createUserAccount", inputEmail, inputUsername, posth);
+                //location.reload();
+              } else {
+                alertify.error("Password must have at least 1 letter and 1 number, and be at least 7 characters long!");
+              }
+            } else {
+              alertify.error("Username must be between 3 and 16 characters!");
+            }
+          } else {
+            alertify.error("Email must be valid!");
+          }
+        } else {
+          alertify.error("Username can only contain A-Z, a-z, 0-9, and _.");
+        }
+    } else {
+      alertify.error("This username is taken!");
+    }
+  } else {
+    alertify.error("This email is taken!");
+  }
+
+    
+});
+
+socket.on('redirectV', (endh) => {
+  window.location.href = `verify?k=${endh}`;
+});
+
+var regform = document.getElementById('regform');
+if (regform.attachEvent) {
+  regform.attachEvent("submit", processForm);
+} else {
+  regform.addEventListener("submit", processForm);
+}
+
+var legform = document.getElementById('legform');
+if (legform.attachEvent) {
+  legform.attachEvent("submit", processSignin);
+} else {
+  legform.addEventListener("submit", processSignin);
+}
+</script>

@@ -1,0 +1,223 @@
+<head>
+<title>Birded | Maintenance</title>
+<link rel="icon" type="image/x-icon" href="favi.ico">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+<h1 style="font-family:arial;position:fixed;top:10%;text-align:center;color:#FFFFFF;">Birded Systems are currently under maintenance!</h1>
+
+    <div id="overlay"><div id="bird">
+
+  <div class="lowerLip"></div>
+
+  <div class="crest"></div>
+
+  <div class="face"></div>
+ 
+  <div class="cheek"></div>
+
+  <div class="eye"></div>
+
+  <div class="upperLip"></div>
+
+</div></div>
+<style>
+   *,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.circle, #bird .eye, .quarter, #bird .lowerLip, #bird .upperLip, #bird .cheek, .half, #bird .face, #bird .crest {
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.half, #bird .face, #bird .crest {
+  background-size: 50% 100%;
+}
+
+.quarter, #bird .lowerLip, #bird .upperLip, #bird .cheek {
+  background-size: 50% 50%;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #18233e;
+}
+
+#bird {
+  width: 20em;
+  height: 20em;
+  overflow: hidden;
+  position: relative;
+  transition: opacity 1s;
+}
+#bird > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+#bird .crest {
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to right, #a12a15, #a12a15);
+  animation: crest 2300ms infinite linear;
+}
+@keyframes crest {
+  0% {
+    transform: rotate(0deg);
+  }
+  25%, 50% {
+    transform: rotate(180deg);
+  }
+  75%, 100% {
+    transform: rotate(360deg);
+  }
+}
+#bird .face {
+  width: 65%;
+  height: 65%;
+  background-image: linear-gradient(to right, #FFF2FF, #FFF2FF);
+  animation: face 2300ms infinite linear;
+}
+@keyframes face {
+  0% {
+    transform: rotate(0deg);
+  }
+  25%, 50% {
+    transform: rotate(-180deg);
+  }
+  75%, 100% {
+    transform: rotate(-360deg);
+  }
+}
+#bird .cheek {
+  width: 65%;
+  height: 65%;
+  background-image: linear-gradient(to right, #E7E7E7, #E7E7E7);
+  animation: cheek 2300ms infinite linear;
+}
+@keyframes cheek {
+  0% {
+    transform: rotate(-90deg);
+  }
+  25%, 50% {
+    transform: rotate(-180deg);
+  }
+  75%, 100% {
+    transform: rotate(-450deg);
+  }
+}
+#bird .upperLip {
+  width: 65%;
+  height: 65%;
+  background-image: linear-gradient(to right, #F7CE42, #F7CE42);
+  animation: upperLip 2300ms infinite linear;
+}
+@keyframes upperLip {
+  0% {
+    transform: rotate(90deg);
+  }
+  25%, 50% {
+    transform: rotate(0deg);
+  }
+  75%, 100% {
+    transform: rotate(90deg);
+  }
+}
+#bird .lowerLip {
+  width: 35%;
+  height: 35%;
+  background-image: linear-gradient(to right, #F7A500, #F7A500);
+  animation: lowerLip 2300ms infinite linear;
+}
+@keyframes lowerLip {
+  0% {
+    transform: rotate(180deg);
+  }
+  25%, 50% {
+    transform: rotate(270deg);
+  }
+  75%, 100% {
+    transform: rotate(180deg);
+  }
+}
+#bird .eye {
+  width: 15%;
+  height: 15%;
+  background-color: #18233e;
+  transform: translate(-60%, -60%);
+  animation: eye 2300ms infinite linear;
+}
+@keyframes eye {
+  0% {
+    transform: translate(-60%, -60%);
+  }
+  25%, 50% {
+    transform: translate(60%, -60%);
+  }
+  75%, 100% {
+    transform: translate(-60%, -60%);
+  }
+}
+
+  .hide {
+        display: none;
+    }
+</style>
+
+<script>
+function setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+function eraseCookie(name) {   
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+  // ------------------------------------------ //
+  
+function done() {
+  $('#overlay').addClass('hide');
+  $('#bird').addClass('hide');
+}
+
+const x = getCookie('session_id');
+const y = getCookie('access_id');
+
+const codes = "16639474,55626123,07282008,69420693,50361996,80028002"
+
+  function chk () {
+if (codes.split(",").indexOf(y) !== -1) {
+  alert("Welcome.")
+  if (!x) {
+  window.location.replace("/register");
+}
+} else {
+  window.location.replace("/soon");
+}
+  }
+
+
+</script>

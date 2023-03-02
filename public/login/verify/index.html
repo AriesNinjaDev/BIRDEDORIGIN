@@ -1,0 +1,492 @@
+<head>
+<title>Birded | Verify</title>
+<link rel="icon" type="image/x-icon" href="/favi.ico">
+<script src="/jquery.min.js"></script>
+  <script src="/foundation.min.js"></script>
+<link href="/login/notifstyle.css" rel="stylesheet">
+
+</head>
+
+<style>
+  body{
+    display: flex;
+	align-items: center;
+	justif-content: center;
+	margin:0;
+	color:#8c8fae;
+	background:#c8c8c8;
+	font:600 16px/18px 'Open Sans',sans-serif;
+  overflow: hidden;
+    background:url(https://cdna.artstation.com/p/assets/images/images/052/337/274/4k/whimmy-bird.jpg?1659538570) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+*,:after,:before{box-sizing:border-box}
+.clearfix:after,.clearfix:before{content:'';display:table}
+.clearfix:after{clear:both;display:block}
+a{color:inherit;text-decoration:none}
+
+.login-wrap{
+	width:100%;
+	margin:auto;
+	max-width:525px;
+	min-height:670px;
+	position:relative;
+	background:url(https://cdna.artstation.com/p/assets/images/images/052/337/274/4k/whimmy-bird.jpg?1659538570) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+}
+.login-html{
+	width:100%;
+	height:100%;
+	position:absolute;
+	padding:90px 70px 50px 70px;
+	background:rgba(40,57,101,.9);
+}
+.login-html .sign-in-htm,
+.login-html .sign-up-htm{
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	position:absolute;
+
+	backface-visibility:hidden;
+	transition:all .4s linear;
+}
+.login-html .sign-in,
+.login-html .sign-up,
+.login-form .group .check{
+	display:none;
+}
+.login-html .tab,
+.login-form .group .label,
+.login-form .group .button{
+	text-transform:uppercase;
+}
+.login-html .tab{
+	font-size:22px;
+	margin-right:15px;
+	padding-bottom:5px;
+	margin:0 15px 10px 0;
+	display:inline-block;
+	border-bottom:2px solid transparent;
+}
+.login-html .sign-in:checked + .tab,
+.login-html .sign-up:checked + .tab{
+	color:#fff;
+	border-color:#1161ee;
+}
+.login-form{
+	min-height:345px;
+	position:relative;
+	perspective:1000px;
+	transform-style:preserve-3d;
+}
+.login-form .group{
+	margin-bottom:15px;
+}
+.login-form .group .label,
+.login-form .group .input,
+.login-form .group .button{
+	width:100%;
+	color:#fff;
+	display:block;
+}
+.login-form .group .input,
+.login-form .group .button{
+	border:none;
+	padding:15px 20px;
+	border-radius:25px;
+	background:rgba(255,255,255,.1);
+}
+.login-form .group input[data-type="password"]{
+	text-security:circle;
+	-webkit-text-security:circle;
+}
+.login-form .group .label{
+	color:#ddd;
+	font-size:12px;
+}
+.login-form .group .button{
+	background:#1161ee;
+}
+.vxd:disabled{
+  background:#666666cc !important;
+  color:#999999 !important;
+}
+.login-form .group label .icon{
+	width:15px;
+	height:15px;
+	border-radius:2px;
+	position:relative;
+	display:inline-block;
+	background:rgba(255,255,255,.1);
+}
+.login-form .group label .icon:before,
+.login-form .group label .icon:after{
+	content:'';
+	width:10px;
+	height:2px;
+	background:#fff;
+	position:absolute;
+	transition:all .2s ease-in-out 0s;
+}
+.login-form .group label .icon:before{
+	left:3px;
+	width:5px;
+	bottom:6px;
+	transform:scale(0) rotate(0);
+}
+.login-form .group label .icon:after{
+	top:6px;
+	right:0;
+	transform:scale(0) rotate(0);
+}
+.login-form .group .check:checked + label{
+	color:#fff;
+}
+.login-form .group .check:checked + label .icon{
+	background:#1161ee;
+}
+.login-form .group .check:checked + label .icon:before{
+	transform:scale(1) rotate(45deg);
+}
+.login-form .group .check:checked + label .icon:after{
+	transform:scale(1) rotate(-45deg);
+}
+.login-html .sign-in:checked + .tab + .sign-up + .tab + .login-form .sign-in-htm{
+	transform:rotate(0);
+}
+.login-html .sign-up:checked + .tab + .login-form .sign-up-htm{
+	transform:rotate(0);
+}
+
+.hr{
+	height:2px;
+	margin:60px 0 50px 0;
+	background:rgba(255,255,255,.2);
+}
+.foot-lnk{
+	text-align:center;
+}
+
+.otc {
+	position: relative;
+	width: 320px;
+	margin: 0 auto;
+}
+
+.otc fieldset {
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+
+.otc fieldset div {
+	display: flex;
+	align-items: center;
+}
+
+.otc legend {
+	margin: 0 auto 1em;
+	color: #5555FF;
+}
+
+input[type="number"] {
+	width: .82em;
+	line-height: 1;
+	margin: .2em;
+	padding: 8px 0 8px;
+	font-size: 2.65em;
+	text-align: center;
+	appearance: textfield;
+	-webkit-appearance: textfield;
+	color: #eee;
+
+  border:none;
+
+	border-radius:15px;
+	background:rgba(255,255,255,.1);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+
+
+/* From: https://gist.github.com/ffoodd/000b59f431e3e64e4ce1a24d5bb36034 */
+.otc label {
+	border: 0 !important;
+	clip: rect(1px, 1px, 1px, 1px) !important;
+	-webkit-clip-path: inset(50%) !important;
+	clip-path: inset(50%) !important;
+	height: 1px !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	padding: 0 !important;
+	position: absolute !important;
+	width: 1px !important;
+	white-space: nowrap !important;
+}
+
+
+  
+</style>
+<br><br>
+<div class="login-wrap">
+	<div class="login-html">
+		<div class="login-form">
+			<div class="sign-in-htm">
+			
+					<p style="text-align: center;" for="user" class="label">Please enter the verification code that was sent to your email.</p>
+        
+        <p style="text-align: center;" for="user" class="label">Be sure to check your spam folder!</p>
+					
+		
+			<form class="otc" name="one-time-code" action="#">
+	<fieldset>
+		<br>
+		<label for="otc-1">Number 1</label>
+		<label for="otc-2">Number 2</label>
+		<label for="otc-3">Number 3</label>
+		<label for="otc-4">Number 4</label>
+		<label for="otc-5">Number 5</label>
+		<label for="otc-6">Number 6</label>
+
+		<!-- https://developer.apple.com/documentation/security/password_autofill/enabling_password_autofill_on_an_html_input_element -->
+		<div>
+		<input type="number" pattern="[0-9]*"  value="" inputtype="numeric" autocomplete="one-time-code" id="otc-1" required>
+
+		<!-- Autocomplete not to put on other input -->
+		<input type="number" pattern="[0-9]*" min="0" max="9" value="" inputtype="numeric" id="otc-2" required>
+		<input type="number" pattern="[0-9]*" min="0" max="9" value="" inputtype="numeric" id="otc-3" required>
+		<input type="number" pattern="[0-9]*" min="0" max="9" value="" inputtype="numeric" id="otc-4" required>
+		<input type="number" pattern="[0-9]*" min="0" max="9" value="" inputtype="numeric" id="otc-5" required>
+		<input type="number" pattern="[0-9]*" min="0" max="9" value="" inputtype="numeric" id="otc-6" required>
+		</div>
+	</fieldset><br><br>
+        <div class="group">
+        <input type="submit" class="button vxd" value="Verify">
+          </div>
+</form>
+				
+				<div class="hr"></div>
+			</div>
+    </div>
+	</div>
+</div>
+<script src="../../socket.io.min.js"></script>
+<script src="../notification.js"></script>
+<script>
+var socket = io();
+
+alertify.set({ delay: 1700 });
+
+  
+function setCookie(name, value, days) {
+  var expires = "";
+  if (days) {
+    var date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+
+function getCookie(name) {
+  var nameEQ = name + "=";
+  var ca = document.cookie.split(';');
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+  }
+  return null;
+}
+
+function eraseCookie(name) {
+  document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+// ------------------------------------------ //
+
+const x = getCookie('session_id');
+const y = getCookie('access_id');
+var verifyhash
+var correctcode
+
+const codes = "16639474,55626123,07282008,69420693,50361996,80028002,14708605"
+
+function chk() {
+  if (codes.split(",").indexOf(y) !== -1) {
+    if (!x) {
+
+    }
+  } else {
+    window.location.replace("https://birded.tech/soon");
+  }
+}
+
+function up(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+if (up("k") == null) {
+  window.location.replace("/login");
+} else {
+  socket.emit("vhashCheck", up("k"));
+}
+
+
+function processForm(e) {
+  if (e.preventDefault) e.preventDefault();
+
+  
+  
+  return false;
+}
+  
+  // full check
+socket.on("vhashCheckResult", (st) => {
+  if (st == 1) {
+    verifyhash = up("k")
+    socket.emit("getCode", verifyhash);
+  } else {
+    window.location.replace("https://game.birded.tech/login");
+  }
+});
+  
+socket.on("codeCheckout", (rc) => {
+  correctcode = rc
+});
+
+socket.on("vS", (rc) => {
+  window.location.href = '../success';
+});
+
+var userCode = '';
+
+let in1 = document.getElementById('otc-1'),
+    ins = document.querySelectorAll('input[type="number"]'),
+	 splitNumber = function(e) {
+		let data = e.data || e.target.value; // Chrome doesn't get the e.data, it's always empty, fallback to value then.
+		if ( ! data ) return; // Shouldn't happen, just in case.
+		if ( data.length === 1 ) return; // Here is a normal behavior, not a paste action.
+
+		console.log(userCode)
+		popuNext(e.target, data);
+		//for (i = 0; i < data.length; i++ ) { ins[i].value = data[i]; }
+		
+	},
+	popuNext = function(el, data) {
+		el.value = data[0]; // Apply first item to first input
+		data = data.substring(1); // remove the first char.
+		if ( el.nextElementSibling && data.length ) {
+			// Do the same with the next element and next data
+			popuNext(el.nextElementSibling, data);
+		}
+	};
+
+ins.forEach(function(input) {
+	/**
+	 * Control on keyup to catch what the user intent to do.
+	 * I could have check for numeric key only here, but I didn't.
+	 */
+	input.addEventListener('keyup', function(e){
+		// Break if Shift, Tab, CMD, Option, Control.
+		if (e.keyCode === 16 || e.keyCode == 9 || e.keyCode == 224 || e.keyCode == 18 || e.keyCode == 17) {
+			 return;
+		}
+		
+		// On Backspace or left arrow, go to the previous field.
+		if ( (e.keyCode === 8 || e.keyCode === 37) && this.previousElementSibling && this.previousElementSibling.tagName === "INPUT" ) {
+			this.previousElementSibling.select();
+		} else if (e.keyCode !== 8 && this.nextElementSibling) {
+			this.nextElementSibling.select();
+		}
+		
+		// If the target is populated to quickly, value length can be > 1
+		if ( e.target.value.length > 1 ) {
+			splitNumber(e);
+		}
+	});
+	
+	/**
+	 * Better control on Focus
+	 * - don't allow focus on other field if the first one is empty
+	 * - don't allow focus on field if the previous one if empty (debatable)
+	 * - get the focus on the first empty field
+	 */
+	input.addEventListener('focus', function(e) {
+		// If the focus element is the first one, do nothing
+		if ( this === in1 ) return;
+		
+		// If value of input 1 is empty, focus it.
+		if ( in1.value == '' ) {
+			in1.focus();
+		}
+		
+		// If value of a previous input is empty, focus it.
+		// To remove if you don't wanna force user respecting the fields order.
+		if ( this.previousElementSibling.value == '' ) {
+			this.previousElementSibling.focus();
+		}
+	});
+});
+
+/**
+ * Handle copy/paste of a big number.
+ * It catches the value pasted on the first field and spread it into the inputs.
+ */
+in1.addEventListener('input', splitNumber);
+
+const inputs = document.querySelectorAll('input[type="number"]');
+const button = document.querySelector('.vxd');
+button.disabled = true
+
+inputs.forEach(input => {
+  input.addEventListener('input', () => {
+    const isFilled = Array.from(inputs).every(input => input.value !== '');
+    button.disabled = !isFilled;
+  });
+});
+
+button.addEventListener('click', (event) => {
+  event.preventDefault();
+  const code = Array.from(inputs).map(input => input.value).join('');
+  if (code == correctcode) {
+    socket.emit("VALIDATE", verifyhash);
+    
+  } else {
+
+// loop through each input field and clear its value
+inputs.forEach(input => {
+  input.value = '';
+});
+
+// move the cursor to the first input field
+inputs[0].focus();
+    alertify.error("Invalid Code!");
+  }
+  
+});
+
+
+
+
+  
+</script>

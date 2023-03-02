@@ -1,0 +1,72 @@
+<head>
+<title>Birded | Loading...</title>
+<link rel="icon" type="image/x-icon" href="../favi.png">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+<style>
+  body {
+    background: #222233;
+    text-align:center;
+    
+  }
+h1 {
+  text-align: center;
+  font-family:arial;
+  color:#FFFFFF;
+  font-size:50px;
+  margin-top:25%;
+}
+</style>
+  
+</head>
+<body>
+ 
+  <h1>Please Enter Your Credentials.</h1>
+  
+</body>
+
+<script>
+  function setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+function eraseCookie(name) {   
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+  // ------------------------------------------ //
+
+function ask () {
+name = prompt("First Name:")
+cred = prompt("8 Digit Code:")
+  
+const codes = "16639474,55626123,07282008,69420693,50361996,80028002,14708605"
+
+  
+if (codes.split(",").indexOf(cred) != -1) {
+  setCookie("access_id",cred,1)
+  alert("Added to whitelist on this device for 24 hours.")
+  window.location.replace("/");
+} else {
+  window.location.replace("https://birded.tech/soon");
+}
+}
+
+setTimeout(ask,100)
+  
+
+</script>
