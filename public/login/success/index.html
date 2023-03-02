@@ -1,22 +1,9 @@
-<!--
-
-This website endpoint serves as a redirect service. It routes the user to their desired server:
-
-./soon : Coming Soon Page (User default)
-./login : Login Page (Default if no session cookie)
-./game : Game Page (Default if contains session cookie)
-
-
-$1 - Super    $5 - Mega    $25 - Ultimate
-
--->
-
-
 <head>
-<title>Birded | Loading...</title>
-<link rel="icon" type="image/x-icon" href="favi.ico">
+<title>Birded | Success!</title>
+<link rel="icon" type="image/x-icon" href="/favi.ico">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
+<h1 style="font-family:arial;position:fixed;top:10%;text-align:center;color:#FFFFFF;">Your account is now registered!<br>Click <a style="color:#86C9F1;" href="../../">here</a> to go back.</h1>
 
     <div id="overlay"><div id="bird">
 
@@ -60,6 +47,7 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #18233e;
+  overflow: hidden;
 }
 
 #bird {
@@ -81,7 +69,7 @@ body {
   width: 100%;
   height: 100%;
   background-image: linear-gradient(to right, #a12a15, #a12a15);
-  animation: crest 2300ms infinite linear;
+  animation: crest 10000ms infinite linear;
 }
 @keyframes crest {
   0% {
@@ -98,7 +86,7 @@ body {
   width: 65%;
   height: 65%;
   background-image: linear-gradient(to right, #FFF2FF, #FFF2FF);
-  animation: face 2300ms infinite linear;
+  animation: face 10000ms infinite linear;
 }
 @keyframes face {
   0% {
@@ -115,7 +103,7 @@ body {
   width: 65%;
   height: 65%;
   background-image: linear-gradient(to right, #E7E7E7, #E7E7E7);
-  animation: cheek 2300ms infinite linear;
+  animation: cheek 10000ms infinite linear;
 }
 @keyframes cheek {
   0% {
@@ -132,7 +120,7 @@ body {
   width: 65%;
   height: 65%;
   background-image: linear-gradient(to right, #F7CE42, #F7CE42);
-  animation: upperLip 2300ms infinite linear;
+  animation: upperLip 10000ms infinite linear;
 }
 @keyframes upperLip {
   0% {
@@ -149,7 +137,7 @@ body {
   width: 35%;
   height: 35%;
   background-image: linear-gradient(to right, #F7A500, #F7A500);
-  animation: lowerLip 2300ms infinite linear;
+  animation: lowerLip 10000ms infinite linear;
 }
 @keyframes lowerLip {
   0% {
@@ -167,7 +155,7 @@ body {
   height: 15%;
   background-color: #18233e;
   transform: translate(-60%, -60%);
-  animation: eye 2300ms infinite linear;
+  animation: eye 10000ms infinite linear;
 }
 @keyframes eye {
   0% {
@@ -184,10 +172,17 @@ body {
   .hide {
         display: none;
     }
+
+  
+.paused * { 
+    animation: none !important;
+    transition: none !important; 
+}
+
 </style>
 
 <script>
-  function setCookie(name,value,days) {
+function setCookie(name,value,days) {
     var expires = "";
     if (days) {
         var date = new Date();
@@ -210,6 +205,11 @@ function eraseCookie(name) {
     document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
   // ------------------------------------------ //
+  
+function done() {
+  $('#overlay').addClass('hide');
+  $('#bird').addClass('hide');
+}
 
 const x = getCookie('session_id');
 const y = getCookie('access_id');
@@ -218,14 +218,14 @@ const codes = "16639474,55626123,07282008,69420693,50361996,80028002"
 
   function chk () {
 if (codes.split(",").indexOf(y) !== -1) {
-  alert("BETA ACCESS ACTIVE. ID:NONE")
+  alert("Welcome.")
   if (!x) {
-  window.location.replace("/login");
+  window.location.replace("/register");
 }
 } else {
   window.location.replace("/soon");
 }
   }
 
-setTimeout(chk, 1400)
+
 </script>

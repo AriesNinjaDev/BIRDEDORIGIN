@@ -228,14 +228,6 @@ function sendVerification(mailTo,userCode) {
   }, (err, data) => {
     if (err) {
       console.error('There was an error:', err);
-    } else {
-      console.log('\nVerification email sent, check your inbox\n');
-      const userVerificationCode = prompt('Enter your verification code ');
-      if (userVerificationCode == trueVerificationCode) {
-        console.log('Email address verified');
-      } else {
-        console.log('Code incorrect');
-      }
     }
   });
   

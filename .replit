@@ -33,6 +33,7 @@ language = "nodejs"
   packageSearch = true
   guessImports = true
   enabledForHosting = false
+  runOptions = "--no-warnings"
 
 [unitTest]
 language = "nodejs"

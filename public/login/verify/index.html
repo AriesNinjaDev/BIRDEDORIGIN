@@ -1,7 +1,9 @@
 <head>
 <title>Birded | Verify</title>
-<link rel="icon" type="image/x-icon" href="../../favi.ico">
-<script src="../../jquery.min.js"></script>
+<link rel="icon" type="image/x-icon" href="/favi.ico">
+<script src="/jquery.min.js"></script>
+  <script src="/foundation.min.js"></script>
+<link href="/login/notifstyle.css" rel="stylesheet">
 
 </head>
 
@@ -114,7 +116,7 @@ a{color:inherit;text-decoration:none}
 .login-form .group .button{
 	background:#1161ee;
 }
-.vxd{
+.vxd:disabled{
   background:#666666cc !important;
   color:#999999 !important;
 }
@@ -266,27 +268,31 @@ input::-webkit-inner-spin-button {
 		<input type="number" pattern="[0-9]*"  value="" inputtype="numeric" autocomplete="one-time-code" id="otc-1" required>
 
 		<!-- Autocomplete not to put on other input -->
-		<input type="number" pattern="[0-9]*" min="0" max="9" maxlength="1"  value="" inputtype="numeric" id="otc-2" required>
-		<input type="number" pattern="[0-9]*" min="0" max="9" maxlength="1"  value="" inputtype="numeric" id="otc-3" required>
-		<input type="number" pattern="[0-9]*" min="0" max="9" maxlength="1"  value="" inputtype="numeric" id="otc-4" required>
-		<input type="number" pattern="[0-9]*" min="0" max="9" maxlength="1"  value="" inputtype="numeric" id="otc-5" required>
-		<input type="number" pattern="[0-9]*" min="0" max="9" maxlength="1"  value="" inputtype="numeric" id="otc-6" required>
+		<input type="number" pattern="[0-9]*" min="0" max="9" value="" inputtype="numeric" id="otc-2" required>
+		<input type="number" pattern="[0-9]*" min="0" max="9" value="" inputtype="numeric" id="otc-3" required>
+		<input type="number" pattern="[0-9]*" min="0" max="9" value="" inputtype="numeric" id="otc-4" required>
+		<input type="number" pattern="[0-9]*" min="0" max="9" value="" inputtype="numeric" id="otc-5" required>
+		<input type="number" pattern="[0-9]*" min="0" max="9" value="" inputtype="numeric" id="otc-6" required>
 		</div>
-	</fieldset>
+	</fieldset><br><br>
+        <div class="group">
+        <input type="submit" class="button vxd" value="Verify">
+          </div>
 </form>
-				<div class="group">
-          <br><br>
-					<input disabled type="submit" class="button vxd" value="Verify">
-				</div>
+				
 				<div class="hr"></div>
 			</div>
     </div>
 	</div>
 </div>
 <script src="../../socket.io.min.js"></script>
+<script src="../notification.js"></script>
 <script>
 var socket = io();
 
+alertify.set({ delay: 1700 });
+
+  
 function setCookie(name, value, days) {
   var expires = "";
   if (days) {
@@ -316,6 +322,7 @@ function eraseCookie(name) {
 const x = getCookie('session_id');
 const y = getCookie('access_id');
 var verifyhash
+var correctcode
 
 const codes = "16639474,55626123,07282008,69420693,50361996,80028002,14708605"
 
@@ -339,8 +346,7 @@ function up(name, url = window.location.href) {
 }
 
 if (up("k") == null) {
-  alert(up("k"))
-  //window.location.replace("https://game.birded.tech/login");
+  window.location.replace("/login");
 } else {
   socket.emit("vhashCheck", up("k"));
 }
@@ -358,11 +364,19 @@ function processForm(e) {
 socket.on("vhashCheckResult", (st) => {
   if (st == 1) {
     verifyhash = up("k")
+    socket.emit("getCode", verifyhash);
+  } else {
+    window.location.replace("https://game.birded.tech/login");
   }
 });
   
+socket.on("codeCheckout", (rc) => {
+  correctcode = rc
+});
 
-
+socket.on("vS", (rc) => {
+  window.location.href = '../success';
+});
 
 var userCode = '';
 
@@ -440,8 +454,39 @@ ins.forEach(function(input) {
  */
 in1.addEventListener('input', splitNumber);
 
+const inputs = document.querySelectorAll('input[type="number"]');
+const button = document.querySelector('.vxd');
+button.disabled = true
+
+inputs.forEach(input => {
+  input.addEventListener('input', () => {
+    const isFilled = Array.from(inputs).every(input => input.value !== '');
+    button.disabled = !isFilled;
+  });
+});
+
+button.addEventListener('click', (event) => {
+  event.preventDefault();
+  const code = Array.from(inputs).map(input => input.value).join('');
+  if (code == correctcode) {
+    socket.emit("VALIDATE", verifyhash);
+    
+  } else {
+
+// loop through each input field and clear its value
+inputs.forEach(input => {
+  input.value = '';
+});
+
+// move the cursor to the first input field
+inputs[0].focus();
+    alertify.error("Invalid Code!");
+  }
+  
+});
+
+
+
 
   
-
-
 </script>

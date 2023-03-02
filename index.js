@@ -5,13 +5,21 @@ var app = express();
 var server = require('http').Server(app);
 
 const dbc = require('./server/dbc');
+const mail = require('./server/mail');
 const crypto = require('crypto');
 
+function gsi() {
+  const timestamp = Date.now();
+  const random = Math.floor(Math.random() * 1000000);
+  return `${timestamp}-${random}`;
+}
+
+
 app.get('/',function(req, res) {
-	res.sendFile(__dirname + '/maintain/index.html');
+	res.sendFile(__dirname + '/public/index.html');
 });
 
-app.use(express.static(__dirname + "/maintain"));
+app.use(express.static(__dirname + "/public"));
 
 
 app.get('*', function(req, res){
@@ -71,21 +79,45 @@ io.sockets.on('connection', function(socket){
   });
 
   socket.on("createUserAccount", (ema, use, pas) => {
-  dbc.registerUser(ema,use,pas);
-   // console.log("INTC")
- //http.get('*',function(req,res){  
-   // res.sendFile(__dirname + '/public/login/verify/index.html');
-   
-  //res.redirect('/?k=' + gets[1]);
-//});
+  const codeI = Math.floor(Math.random() * (999999 - 111111 + 1) + 111111);
+  const idI = gsi();
+  dbc.registerUser(ema,use,pas,codeI,idI);
+  mail.sendVerification(ema,codeI)
+   socket.emit("redirectV", idI);
   
-})
+});
+
+  socket.on("getCode", (ide) => {
+  dbc.idToCode(ide)
+ .then(result => {
+    allowed = result;
+    socket.emit("codeCheckout", allowed);
+  })
+  .catch(error => {
+    console.log(error);
+    // Handle the error
+    
+  });
 
 });
+
+  socket.on("VALIDATE", (ide) => {
+  dbc.sendVerify(ide)
+   .then(result => {
+    allowed = result;
+    socket.emit("vS", allowed);
+  })
+  .catch(error => {
+    console.log(error);
+    // Handle the error
+  });
+    
+});
+
+});
+
   
 
-//dbc.registerUser("Aries","lololol")
-
-//dbc.chkUsername("asd")
+console.log("Thread > Server Online with 0 errors.")
 
 

@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 // Connect to remote MongoDB database
-mongoose.connect(process.env['dburi'], { useNewUrlParser: true });
 mongoose.set('strictQuery', true)
+mongoose.connect(process.env['dburi'], { useNewUrlParser: true });
 
 // Create a MongoDB schema for the player
 const playerSchema = new mongoose.Schema({
@@ -14,6 +14,10 @@ const playerSchema = new mongoose.Schema({
       v: { type: Number, required: true, enum: [0, 1] },
       code: { type: Number, required: true },
       id: { type: String, required: true }
+    },
+    sessions: {
+      type: [String],
+      required: false
     },
     creation: { type: Date, required: false },
     status: { type: Number, required: true, enum: [0, 1, 2] },
@@ -73,17 +77,9 @@ const playerSchema = new mongoose.Schema({
 // Create a model for the schema
 const Player = mongoose.model('Player', playerSchema);
 
-function gsi() {
-  const timestamp = Date.now();
-  const random = Math.floor(Math.random() * 1000000);
-  return `${timestamp}-${random}`;
-}
-
 // Create a new document (C in 
-function registerUser (email,user,pwdh) {
+function registerUser (email,user,pwdh,codeI,idI) {
   const now = new Date();
-  const codeI = Math.floor(Math.random() * (999999 - 111111 + 1) + 111111);
-  const idI = gsi();
 const newPlayer = new Player({
   account: {
     playername: user,
@@ -93,6 +89,9 @@ const newPlayer = new Player({
       v: 0,
       code: codeI,
       id: idI
+    },
+    sessions: {
+      
     },
     creation: now,
     status: 1,
@@ -126,7 +125,7 @@ newPlayer.save((error) => {
     console.log('Player data saved successfully!');
   }
 });
-return [codeI,idI]
+
 }
 
 // Find all documents in the database (R in CRUD)
@@ -181,20 +180,51 @@ async function chkVerifyHash(given) {
   try {
     const players = await Player.find({});
     for (let i = 0; i < players.length; i++) {
-      curref = players[i].account.email
-      if (curref.toLowerCase() === eml.toLowerCase()) {
-        return 0;
+      curref = players[i].account.verification.id
+      if (curref.toLowerCase() === given.toLowerCase()) {
+        if (players[i].account.verification.v == 0) {
+          return 1;
+        } else {
+        return -1;
+        }
       }
     }
-    console.log("NEW MAKE REQUEST >> " + usr);
-    return 1;
+    return 0;
   } catch (err) {
     console.error(err);
     return false;
   }
 }
 
+async function idToCode(ide) {
+  try {
+    const player = await Player.findOne({ "account.verification.id": ide });
+    if (!player) return false;
+    const code = player.account.verification.code;
+    return code;
+  } catch (err) {
+    console.error(err);
+    return false;
+  }
+}
 
+async function sendVerify(ide) {
+  try {
+    const result = await Player.updateOne(
+      { "account.verification.id": ide }, 
+      {
+	      $set: {
+	        "account.verification.v": 1
+	      },
+	    } );
+
+      return(result);
+    
+  } catch (err) {
+    console.error(err);
+    return false;
+  }
+}
 
 
 /*
@@ -227,6 +257,6 @@ Player.findByIdAndDelete('<player_id>', (error) => {
   }
 });
 */
+console.log("Thread > DB Connected on MAIN")
 
-
-module.exports = { registerUser, chkUsername, chkEmail, chkVerifyHash }
+module.exports = { registerUser, chkUsername, chkEmail, chkVerifyHash, idToCode, sendVerify }
